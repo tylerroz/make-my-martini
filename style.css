@@ -355,6 +355,37 @@ body {
   border-top: 1px solid var(--border);
 }
 
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 2rem;
+  text-align: center;
+}
+
+.site-footer p {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-hint);
+}
+
+.site-footer a {
+  color: var(--text-hint);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 /* Bar order phrase */
 .order-block {
   background: rgba(201, 168, 76, 0.05);
