@@ -263,6 +263,32 @@ document.getElementById('random-btn').addEventListener('click', () => {
   render();
 });
 
+// ─── The Jake™ ───────────────────────────────────────────────────────────────
+
+document.getElementById('jake-btn').addEventListener('click', () => {
+  state.spirit  = 'vodka';
+  state.ratio   = 'bone-dry';
+  state.mods    = new Set(['extra-dirty']);
+  state.prep    = 'stirred';
+  state.garnish = 'olive';
+
+  // Sync chip UI
+  document.querySelectorAll('.chip-row').forEach(row => {
+    const group = row.dataset.group;
+    const mode  = row.dataset.mode;
+    row.querySelectorAll('.chip').forEach(chip => {
+      const val = chip.dataset.val;
+      if (mode === 'solo') {
+        chip.classList.toggle('active', state[group] === val);
+      } else if (mode === 'multi') {
+        chip.classList.toggle('active', state.mods.has(val));
+      }
+    });
+  });
+
+  render();
+});
+
 // ─── Init ────────────────────────────────────────────────────────────────────
 
 render();

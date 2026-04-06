@@ -168,9 +168,18 @@ body {
   color: var(--accent);
 }
 
+/* Action row (Surprise Me + Jake) */
+.action-row {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
 /* Surprise Me button */
 .random-btn {
-  margin-top: 0.5rem;
+  margin-top: 0;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.1em;
@@ -200,6 +209,26 @@ body {
 
 .random-btn:hover .random-icon {
   transform: rotate(180deg);
+}
+
+/* The Jake™ button */
+.jake-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: var(--radius-chip);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-hint);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.jake-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-muted);
 }
 
 /* ============================================
