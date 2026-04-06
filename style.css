@@ -116,7 +116,9 @@ body {
     gap: 2rem;
     padding: 1.5rem 1.25rem 3rem;
   }
-  .result-col { order: -1; }
+  .result-col {
+    position: static;
+  }
 }
 
 /* ============================================
