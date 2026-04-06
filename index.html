@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Make My Martini</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <span class="logo-eyebrow">Est. Tonight</span>
+      <h1 class="logo">Make My Martini</h1>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- LEFT: Builder controls -->
+    <section class="builder-col">
+
+      <div class="section-block">
+        <p class="section-label">Base Spirit</p>
+        <div class="chip-row" data-group="spirit" data-mode="solo">
+          <button class="chip active" data-val="gin">Gin</button>
+          <button class="chip" data-val="vodka">Vodka</button>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <p class="section-label">Vermouth Ratio</p>
+        <div class="chip-row" data-group="ratio" data-mode="solo">
+          <button class="chip" data-val="wet">Wet</button>
+          <button class="chip active" data-val="classic">Classic</button>
+          <button class="chip" data-val="dry">Dry</button>
+          <button class="chip" data-val="extra-dry">Extra Dry</button>
+          <button class="chip" data-val="bone-dry">Bone Dry</button>
+          <button class="chip" data-val="in-out">In &amp; Out</button>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <p class="section-label">Modifiers</p>
+        <div class="chip-row" data-group="mod" data-mode="multi">
+          <button class="chip" data-val="dirty">Dirty</button>
+          <button class="chip" data-val="extra-dirty">Extra Dirty</button>
+          <button class="chip" data-val="bruised">Bruised</button>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <p class="section-label">Preparation</p>
+        <div class="chip-row" data-group="prep" data-mode="solo">
+          <button class="chip active" data-val="stirred">Stirred</button>
+          <button class="chip" data-val="shaken">Shaken</button>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <p class="section-label">Serve</p>
+        <div class="chip-row" data-group="serve" data-mode="solo">
+          <button class="chip active" data-val="up">Straight Up</button>
+          <button class="chip" data-val="rocks">On the Rocks</button>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <p class="section-label">Garnish</p>
+        <div class="chip-row" data-group="garnish" data-mode="solo">
+          <button class="chip active" data-val="twist">Lemon Twist</button>
+          <button class="chip" data-val="olive">Olive</button>
+          <button class="chip" data-val="onion">Pickled Onion</button>
+          <button class="chip" data-val="none">None</button>
+        </div>
+      </div>
+
+      <button class="random-btn" id="random-btn">
+        <span class="random-icon">⟳</span> Surprise Me
+      </button>
+
+    </section>
+
+    <!-- RIGHT: Result card -->
+    <aside class="result-col">
+      <div class="result-card">
+
+        <div class="glass-wrap">
+          <svg class="glass-svg" viewBox="0 0 80 110" xmlns="http://www.w3.org/2000/svg">
+            <!-- Liquid fill -->
+            <clipPath id="glass-clip">
+              <path d="M12 10 L40 68 L40 68 L68 10 Z"/>
+            </clipPath>
+            <rect id="liquid-fill" x="12" y="10" width="56" height="58" clip-path="url(#glass-clip)" fill="var(--gin)" opacity="0.12"/>
+            <rect id="dirty-fill" x="12" y="10" width="56" height="58" clip-path="url(#glass-clip)" fill="var(--brine)" opacity="0"/>
+            <!-- Glass outline -->
+            <path d="M12 10 L40 68 L40 86 L26 86 L26 90 L54 90 L54 86 L40 86 L40 68 L68 10 Z" stroke="var(--glass-stroke)" stroke-width="1.2" fill="none"/>
+            <!-- Ice cubes -->
+            <g id="ice-group" opacity="0">
+              <rect x="25" y="42" width="9" height="9" rx="1.5" stroke="var(--glass-stroke)" stroke-width="0.8" fill="white" fill-opacity="0.3"/>
+              <rect x="36" y="48" width="9" height="9" rx="1.5" stroke="var(--glass-stroke)" stroke-width="0.8" fill="white" fill-opacity="0.3"/>
+              <rect x="46" y="40" width="9" height="9" rx="1.5" stroke="var(--glass-stroke)" stroke-width="0.8" fill="white" fill-opacity="0.3"/>
+            </g>
+            <!-- Olive garnish -->
+            <g id="garnish-olive" opacity="0">
+              <line x1="16" y1="10" x2="64" y2="10" stroke="var(--glass-stroke)" stroke-width="0.6" stroke-dasharray="3 2"/>
+              <circle cx="40" cy="10" r="5" fill="var(--olive)" stroke="var(--glass-stroke)" stroke-width="0.5"/>
+              <circle cx="40" cy="10" r="2" fill="var(--pimento)"/>
+            </g>
+            <!-- Lemon twist garnish -->
+            <g id="garnish-twist" opacity="1">
+              <line x1="16" y1="10" x2="64" y2="10" stroke="var(--glass-stroke)" stroke-width="0.6" stroke-dasharray="3 2"/>
+              <path d="M34 6 Q40 3 46 6 Q40 14 34 6 Z" fill="var(--lemon)" stroke="var(--glass-stroke)" stroke-width="0.5"/>
+            </g>
+            <!-- Onion garnish -->
+            <g id="garnish-onion" opacity="0">
+              <line x1="16" y1="10" x2="64" y2="10" stroke="var(--glass-stroke)" stroke-width="0.6" stroke-dasharray="3 2"/>
+              <circle cx="40" cy="10" r="5" fill="var(--onion)" stroke="var(--glass-stroke)" stroke-width="0.5"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="result-body">
+          <p class="result-method" id="result-method">Stirred · Straight Up</p>
+          <h2 class="result-name" id="result-name">Classic Gin Martini</h2>
+
+          <div class="ingredients-block">
+            <p class="block-label">What's in it</p>
+            <ul class="ingredient-list" id="ingredient-list"></ul>
+          </div>
+
+          <div class="flavor-block">
+            <p class="block-label">Flavor Profile</p>
+            <div class="flavor-bars" id="flavor-bars"></div>
+          </div>
+
+          <p class="tasting-note" id="tasting-note"></p>
+
+          <div class="order-block">
+            <p class="block-label">Say this at the bar</p>
+            <p class="order-phrase" id="order-phrase"></p>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
