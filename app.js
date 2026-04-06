@@ -9,7 +9,6 @@ const state = {
   ratio:   'classic',
   mods:    new Set(),
   prep:    'stirred',
-  serve:   'up',
   garnish: 'twist',
 };
 
@@ -139,7 +138,6 @@ function getOrderPhrase() {
   parts.push(`${spirit} ${drink}`);
 
   parts.push(state.prep === 'shaken' ? 'shaken' : 'stirred');
-  parts.push(state.serve === 'rocks' ? 'on the rocks' : 'straight up');
 
   const garnishMap = { twist: 'with a twist', olive: 'with an olive', onion: 'with an onion', none: '' };
   if (garnishMap[state.garnish]) parts.push(garnishMap[state.garnish]);
@@ -160,7 +158,7 @@ function render() {
   // Name & method
   document.getElementById('result-name').textContent = name;
   document.getElementById('result-method').textContent =
-    `${state.prep === 'shaken' ? 'Shaken' : 'Stirred'} · ${state.serve === 'up' ? 'Straight Up' : 'On the Rocks'}`;
+    state.prep === 'shaken' ? 'Shaken' : 'Stirred';
 
   // Ingredients
   const ul = document.getElementById('ingredient-list');
@@ -190,8 +188,6 @@ function render() {
   const dirtyOpacity = state.mods.has('extra-dirty') ? '0.55' : state.mods.has('dirty') ? '0.35' : '0';
   document.getElementById('dirty-fill').style.opacity = dirtyOpacity;
 
-  // Ice
-  document.getElementById('ice-group').style.opacity = state.serve === 'rocks' ? '1' : '0';
 }
 
 // ─── Event Handling ──────────────────────────────────────────────────────────
@@ -245,7 +241,6 @@ document.getElementById('random-btn').addEventListener('click', () => {
   state.spirit  = pick(['gin', 'vodka']);
   state.ratio   = pick(['wet', 'classic', 'classic', 'dry', 'extra-dry', 'bone-dry', 'in-out']);
   state.prep    = pick(['stirred', 'stirred', 'shaken']);
-  state.serve   = pick(['up', 'up', 'rocks']);
   state.garnish = pick(['twist', 'twist', 'olive', 'onion', 'none']);
   state.mods    = new Set();
   if (Math.random() < 0.3) state.mods.add(Math.random() < 0.5 ? 'dirty' : 'extra-dirty');
